@@ -1,14 +1,65 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
+import axios from 'axios';
+import ItemCard from '../Component/ItemCard';
+import Filter from '../Component/Filter';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="fs-24">SpaceX Launch Programs</h1>
-      </header>
-    </div>
-  );
+
+
+class App extends Component {
+  state = {
+    data: [],
+    params: {}
+  }
+  componentDidMount() {
+    this.fetchData()
+  }
+  setValue = (target, type, value) => {
+    if (type in this.state.params && value === this.state.params[type]) {
+      delete this.state.params[type];
+      this.fetchData()
+    } else {
+      this.setState(prevState => ({
+        params: {
+          ...prevState.params,
+          [type]: value
+        }
+      }),
+        () => this.fetchData()
+      )
+    }
+  }
+
+
+  fetchData = () => {
+    axios.get('https://api.spacexdata.com/v3/launches?limit=100', { params: this.state.params })
+      .then(res => this.showOutput(res.data))
+      .catch(err => console.log(err))
+  }
+
+  showOutput = (data) => {
+    this.setState({
+      data
+    })
+  }
+
+  render() {
+
+    const outputItem = this.state.data.map(item => {
+      return <ItemCard key={item.mission_name} details={item} />
+    })
+    return (
+      <div className="App">
+        <div className="contentContainer">
+          <h1 className="heading mt-20 fs-24">SpaceX Launch Programs</h1>
+          <Filter setValue={this.setValue} />
+          <div className="content">
+            {outputItem}
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

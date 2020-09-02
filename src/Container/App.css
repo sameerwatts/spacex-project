@@ -3,3 +3,82 @@
   height: auto;
   background-color: #eee;
 }
+
+.contentContainer {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-template-areas: 'heading heading''filterWrapper filterWrapper' 'content content';
+  grid-gap: 20px;
+  width: 90%;
+  margin: auto;
+  padding-bottom: 50px;
+}
+
+.heading {
+  grid-area: heading;
+}
+
+.filterWrapper {
+  grid-area: filterWrapper;
+}
+
+.content {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr;
+  grid-area: content;
+}
+
+.filtersHeading {
+  text-align: center;
+  position: relative;
+}
+
+.filtersHeading::after {
+  position: absolute;
+  content: '';
+  height: 2px;
+  bottom: -4px;
+  background-color: #cccccc;
+  margin: 0 auto;
+  width: 80%;
+  left: 0;
+  right: 0;
+}
+
+.filterButtonWrapper, .successfulLaunchWrapper, .successfulLandingWrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+}
+
+@media only screen and (min-width: 700px) {
+  .content {
+    grid-template-columns: 1fr 1fr;
+  }
+  .contentContainer {
+    /* max-width: 600px; */
+    grid-template-areas: 'heading heading' 'filterWrapper content' '. content';
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .content {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .contentContainer {
+    /* max-width: 800px; */
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .contentContainer {
+    /* max-width: 1024px; */
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .contentContainer {
+    max-width: 1440px;
+  }
+}
