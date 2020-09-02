@@ -58,6 +58,18 @@
 
 /*---------------- Font Sizes ---------------------*/
 
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.pb-40 {
+    padding-bottom: 40px;
+}
+
 /*---------------- Line Height ---------------------*/
 
 .lh-n {

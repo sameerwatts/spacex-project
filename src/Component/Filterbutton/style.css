@@ -1,0 +1,9 @@
+.basicButtonStyle {
+    border: none;
+    color: #000;
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: 100px;
+    justify-self: center;
+    background-color: var(--light-green);
+}
