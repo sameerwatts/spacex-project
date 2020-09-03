@@ -1,7 +1,7 @@
 import React from 'react';
 import FilterButton from '../Filterbutton';
 
-const FilterGroup = ({type, valueData, onFilterClick}) => {
+const FilterGroup = ({ type, valueData, onFilterClick}) => {
 
   
     return (

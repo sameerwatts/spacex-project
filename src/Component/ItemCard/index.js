@@ -12,7 +12,7 @@ const ItemCard = ({ details }) => {
             <p className="mt-10 fw-300"><span className="fw-500">Mission Ids:</span>{details.mission_id.join()}</p>
             <p className="mt-10 fw-300"><span className="fw-500">Launch Year:</span>{details.launch_year}</p>
             <p className="mt-10 fw-300"><span className="fw-500">Successful Launch :</span>{details.launch_success.toString()}</p>
-            <p className="mt-10 fw-300"><span className="fw-500">Successful Landing:</span>{details.rocket.first_stage.cores[0].land_success}</p>
+            <p className="mt-10 fw-300"><span className="fw-500">Successful Landing:</span>{details.rocket.first_stage.cores[0].land_success === null ? 'In Flight' : details.rocket.first_stage.cores[0].land_success.toString() }</p>
         </ContentWrapper>
     );
 };

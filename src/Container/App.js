@@ -17,8 +17,13 @@ class App extends Component {
   setValue = (target, type, value) => {
     if (type in this.state.params && value === this.state.params[type]) {
       delete this.state.params[type];
+      target.style.backgroundColor = 'var(--light-green)';
       this.fetchData()
     } else {
+      [...target.parentElement.children].forEach(element => {
+        element.style.backgroundColor = 'var(--light-green)';
+      });
+      target.style.backgroundColor = 'var(--dark-green)';
       this.setState(prevState => ({
         params: {
           ...prevState.params,
